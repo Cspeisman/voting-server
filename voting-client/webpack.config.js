@@ -1,9 +1,13 @@
+import webpack from 'webpack';
+
 export default {
   entry: [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
     './src/index.js'
   ],
   module: {
-    loaders: [{test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'}]
+    loaders: [{test: /\.jsx?$/, exclude: /node_modules/, loader: 'react-hot!babel'}]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -15,5 +19,9 @@ export default {
   },
   devServer: {
     contentBase: './dist',
-  }
-}
+    hot: true,
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
+};
