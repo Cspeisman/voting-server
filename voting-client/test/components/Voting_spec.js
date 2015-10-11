@@ -1,4 +1,5 @@
 import React from 'react/addons';
+import ReactDOM from 'react-dom';
 import Voting from '../../src/components/Voting';
 import {expect} from 'chai';
 
@@ -16,7 +17,7 @@ describe('Voting', () => {
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 
     expect(buttons.length).to.equal(2);
-    expect(buttons[0].getDOMNode().textContent).to.equal('Trainspotting')
-    expect(buttons[1].getDOMNode().textContent).to.equal('28 Days Later')
+    expect(ReactDOM.findDOMNode(buttons[0]).textContent).to.equal('Trainspotting')
+    expect(ReactDOM.findDOMNode(buttons[1]).textContent).to.equal('28 Days Later')
   });
 });
